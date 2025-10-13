@@ -1,0 +1,23 @@
+
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title  %} {% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/2.css')}}">
+</head>
+<body>
+    <form method="post">
+        <h1>Sign in</h1>
+        <div>
+            <h3>Name :</h3><input name="name" placeholder="Name">
+        </div>
+        <div>
+            <h3>Password :</h3><input name="password" id="" placeholder="Password">
+        </div>
+        <button type="sumbit" value="Sumbit">SUBMIT</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title  %}
+Home
+{% endblock  %}
+{% block text %}
+    {% for i in  m %}
+        <div id="g"> 
+            <a href="/buy/{{i['id']}}">
+                <h4>Name: {{i["name"]}}</h4><br>
+                <h4>Price: {{i["price"]}}</h4><br>
+                <h4>Time for preparing: {{i['time']}} mins</h4>
+            </a>
+        <div>
+    {% endfor %}
+{% endblock  %}
