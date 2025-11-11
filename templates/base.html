@@ -1,35 +1,20 @@
-
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title  %} {% endblock %}</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/1.css')}}">
+    <meta name="viewport" content="width=device-width, 
+    initial-scale=1.0">
+    <title>{% block title  %} {% endblock title %}</title>
+    <link rel="stylesheet"
+     href="{{url_for('static', filename='css/1.css')}}">
 </head>
 <body>
-    <div>
-    <header>
-        {% if us %} <h4>Budjet: {{us["budjet"]}}</h4>
-        {% else %} <h4> To buy those goods, 
-            you need to gain an account of our site</h4>
-        {% endif  %}
-        <a href="/">Home</a>
-        <a href="/cart">Cart</a>
-        <a href="/about">About</a>
-        {% if us %}
-        {{us["name"]}}
-        {% else %}
-        <a href="/sign_in">Sing in</a>
-        {% endif %}
-        </header>
-    
-    <br>
-    <div id= "main">
-        <br>
-        {% block text  %}
-        {% endblock  %}
-    </div>
-    </div>
+<a href="/" id='left'>Home</a>
+<a href="/about" id='left'>About</a>
+<br>
+<div id='main'>
+  {% block text %}
+  {% endblock  %}
+</div>
 </body>
 </html>

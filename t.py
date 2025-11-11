@@ -1,7 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
-
-app = Flask(__name__)
 
 # Функция для подключения к базе данных
 def get_db_connection():
@@ -11,28 +8,21 @@ def get_db_connection():
 
 
 conn=get_db_connection()
-conn.execute('''DELETE FROM user''')
-#conn.commit()
-#conn.execute('''CREATE S cart(
-#             id INTEGER PRIMARY KEY AUTOINCREMENT,
-#             name VARCHAR(25),
-#             time INTEGER(2),
-#             price BIGINT)''')
-#conn.commit()
-#conn.execute('''CREATE TABLE IF NOT EXISTS user(
-#             id BIGINT PRIMARY KEY AUTOINCREMENT,
-#             name VARCHAR(12),
-#             password VARCHAR(12),
-#             budjet DOUBLE DEFAULT 1000)
-#             ''')   
-#conn.commit()
-#conn.execute("DROP TABLE goods")
-conn.execute("INSERT INTO goods values(1, 'Pizza', 25, 15 )")
+m=conn.execute("SELECT * ")
+conn.execute("DROP TABLE goods")
+conn.execute('''
+        CREATE TABLE goods(
+                 id INTEGER PRIMARY KEY,
+                 name VARCHAR(25),
+                 time INTEGER(2),
+                 price BIGINT,
+                 pathimg VARCHAR(500))''')
 conn.commit()
-conn.execute("INSERT INTO goods values(2, 'Water', 1, 2 )")
+conn.execute("INSERT INTO goods values(1, 'Pizza', 25, 15, 'https://avatars.mds.yandex.net/i?id=6494f73f563ebae8e2fd426f042b2d45432518f6-5088700-images-thumbs&n=13' )")
 conn.commit()
-conn.execute("INSERT INTO goods values(3, 'Soup', 25, 14 )")
+conn.execute("INSERT INTO goods values(2, 'Water', 1, 2, 'https://avatars.mds.yandex.net/i?id=a585b2d3398bccd569e3bfbb35e4a70601b5f7b3457b5acd-12384509-images-thumbs&n=13' )")
 conn.commit()
-conn.execute('DELETE FROM user')
+conn.execute("INSERT INTO goods values(3, 'Soup', 25, 14, 'https://avatars.mds.yandex.net/i?id=8306188cc03bfa3a8380d13f10f29ef1ccc9c39c-4219883-images-thumbs&n=13' )")
 conn.commit()
 conn.close()
+
