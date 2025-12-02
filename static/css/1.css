@@ -1,36 +1,170 @@
-#left{
-  float:right;
-  margin-right:40px;
-  text-decoration: none;
-  font-size: 3em;
-}
-#left:hover{
-    color:yellowgreen;
-}
-#main{
-  background-color:rgb(50, 0, 0 ) ;
-  padding:40px;
-  color:goldenrod;
-  margin-top: 80px;
-}
 body{
-  background-color: red;
+    background-color: rgb(60, 0, 200);
+}
+#categoty{
+    background-color: rgb(45,45, 45 );
+    border-radius: 30px;
+    width: 280px;
+    height: 280px;
+    padding: 25px;
+    color: white;
+    text-align: center;
+    margin: 25px;
+    float:left;
+}
+#categoty img{
+    width: 170px;
+    height: 170px;
+    text-box: block;
+    text-align: center ;
+}
+.block_good{
+    padding: 15px;
+    text-decoration: none;
+    font-family: arial;
 }
 #good{
-  padding:20px;
-  background-color:coral;
-  width:255px;
-  border-radius:20px;
-  color:black;
+    color:white;
+    background-color: rgb(50, 50, 50);
+    width: 650px;
+    height: 290px;
+    padding: 10px;
+}
 
+#good div img{
+    width: 250px;
+    height: 250px;
 }
-#good img{
-  width:200px;
-  height:200px;
+#order{
+    background-color: rgb(200, 200, 200);
+    color: black;
+    width: 510px;
+    height: 250px;
+    padding: 10px;
 }
-#main a{
+#order div img{
+    width: 150px;
+    height: 150px;
+}
+.block_good div{
+    float:left;
+    margin-left:10px;
+}
+.block_good h1{
+    text-align: center;
     text-decoration: none;
 }
-#main a:hover{
-    color:yellowgreen;
+
+#box{
+    width: 200px;
+    height:200px;
+    background-color: rgb(45, 45, 45);
+    border-radius: 4px;
+    border:none;
+    padding: 25px;
+    margin-top: 75px;
+}
+#box img{
+    width: 150px;
+    height:150px;
+    border-radius: 7px;
+    border:none;
+    align-content: center ;
+}
+
+#promocode{
+    width:240px;
+    height: 30px;
+    align-items: center;
+    margin-top: 50px;
+    border-radius: 12px;
+    border: solid black 3px;
+    margin-left: 35%;
+}
+#title_discount{
+    text-align: center;
+    color: white;
+    font-family: Arial;
+}
+.block_good{
+    padding: 15px;
+    text-decoration: none;
+    font-family: arial;
+}
+
+.block_good{
+    padding: 15px;
+    text-decoration: none;
+    font-family: arial;
+}
+#good{
+    color:white;
+    background-color: rgb(50, 50, 50);
+    width: 680px;
+    height: 320px;
+    padding: 10px;
+}
+
+#good div img{
+    width: 250px;
+    height: 250px;
+}
+#order{
+    background-color: rgb(200, 200, 200);
+    color: black;
+    width: 510px;
+    height: 250px;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 20px;
+}
+#order div img{
+    width: 150px;
+    height: 150px;
+
+}
+.block_good div{
+    float:left;
+    margin-left:10px;
+}
+.block_good h1{
+    text-align: center;
+    text-decoration: none;
+}
+
+.block_good #text{
+    padding-left:25px;
+}#img_gd{
+    width: 500px;
+    height: 500px;
+    margin-left: 30px;
+}
+#img_gd img{
+    width: 480px;
+    height: 480px;   
+    border-radius: 30px;
+}
+#desc_gd{
+    height: 420px;
+}
+.form_gd{
+    width: 35%;
+    border: double 6px black;
+    border-radius: 30px;
+    background-color: rgb(45, 45, 45);
+    padding:40px;
+    color: white;
+    font-family: Tahoma;
+    margin: 30px;
+    float: left;
+    
+}
+#buyy_gd{
+    color: white;
+}
+#buyy_gd:hover{
+    color: yellowgreen;
+}
+#order_putaway{
+    margin: 50p;
 }

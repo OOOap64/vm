@@ -1,17 +1,36 @@
-{% extends 'base.html' %}
-{% block title  %}
+{% extends "base.html" %}
+{% block title %}
 Home
-{% endblock  %}
-{% block text %}
-    {% for i in  m %}
-    <a href="/buy/{{i['id']}}">
-    <div id='good'>
-        <img  src="{{i['pathimg']}}">
-        <h1>Name : {{i['name']}}</h1>
-        <h1>Price :{{i['price']}}</h1>
-        <h1>Time for preparing: {{i['time']}} mins</h1>
+{% endblock title %}
+{% block procd %}
+    <input id="promocode" type="text" name="promocode">
     </div>
-    </a>
-    <br>
-    {% endfor %}
-{% endblock  %}
+{% endblock procd %}
+{% block main %}
+    <a  href='/game'>
+    <div id='categoty'>
+        <img src="C:\Users\user\Desktop\WWW3\static\img\game.webp">
+        <h1>Game</h1>
+    </div>
+<a/>
+<a  href='/budjet'>
+    <div id='categoty'>
+        <img src="C:\Users\user\Desktop\WWW3\static\img\budjet.webp">
+        <h1>Budjet</h1>
+    </div>
+<a/>
+<a  href='/office'>
+    <div id='categoty'>
+        <img src="C:\Users\user\Desktop\WWW3\static\img\ofice.webp">
+        <h1>Office</h1>
+    </div>
+<a/>
+<a  href='/pro'>
+    <div id='categoty'>
+        <img src="C:\Users\user\Desktop\WWW3\static\img\pro.webp">
+        <h1>Pro</h1>
+    </div>
+<a/>
+
+
+{% endblock main %}
