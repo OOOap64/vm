@@ -15,7 +15,7 @@ def delete_non_paid_order():
     conn=condb()
     m=len(conn.execute("SELECT * FROM Comp").fetchall())
     if m:
-        conn.execute('DELETE FROM Orders WHERE paid=Flase',)
+        conn.execute('DELETE FROM Orders WHERE paid=False',)
     conn.commit()
     conn.close
 
@@ -33,8 +33,8 @@ def iniDB():
                   ads VARCHAR(100),
                   img VARCHAR(30))""")
     conn.commit()
-    conn.execute("""CREATE TABLE IF NOT EXISTS User(id INTEGER, ip VARCHAR(20), game BOOLEAN,
-                 pro BOOLEAN, office BOOLEAN, budjet BOOLEAN )""")
+    conn.execute("""CREATE TABLE IF NOT EXISTS User(id INTEGER, ip VARCHAR(20), game INTEGER(1),
+                 pro INTEGER(1), office  INTEGER(1), budjet  INTEGER(1) )""")
     conn.commit()
     conn.execute("""CREATE TABLE IF NOT EXISTS Orders(id INTEGER , ads VARCHAR(200) , name VARCHAR(40) , img VARCHAR(200),  num INTEGER, ip VARCHAR(20), paid BOOLEAN )""")
     conn.commit()
@@ -44,23 +44,26 @@ def iniDB():
 def ipp():
     h=socket.gethostname()
     h=socket.gethostbyname(h)
-    return h
+    return str(h)
 
 @app.route('/')
 def main():
     delete_non_paid_order()
+    conn=condb()
+    us=conn.execute('SELECT * from User where ip=?', (ipp(),)).fetchall()
+    print(ipp(), us[0]['ip'])
+
+    if us ==[]:
+        conn.execute('INSERT INTO User VALUES(?, ?, 0, 0, 0, 0)', (len(us)+1, ipp(),))
+        conn.commit()
     return render_template('home.html')
 
 @app.route('/', methods=['POST'])
 def promocode():
     conn=condb()
-    code=request.form['code']
-    us=conn.execute('SELECT * from User where id=?', (ipp())) 
-    if us is None:
-        conn.execute('INSERT INTO User VALUES(?, False, False, False, False)', (ipp()))
-        conn.commit()
+    code=request.form['promocode']
     if code=='playgame':
-        conn.execute('UPDATE User  SET game=True, where ip=?', (ipp()))
+        conn.execute('UPDATE User  SET game = 1 where ip=?', (ipp(),))
         conn.commit()
     return render_template('home.html')
 
@@ -68,14 +71,14 @@ def promocode():
 def order():
     conn=condb()
     delete_non_paid_order()
-    m=conn.execute('SELECT * FROM Order where ip=?', (ipp()))
-    return render_template('order.html', m=m)
+    e=conn.execute("SELECT * FROM Orders where ip=?", (ipp(),)).fetchall()
+    return render_template('order.html', m=e)
 
 @app.route('/orders/away/<int:i>')
 def away(i):
     delete_non_paid_order()
     conn=condb()
-    conn.execute('DELETE FROM Order where id=?', (i))
+    conn.execute('DELETE FROM Orders where id=?', (i))
     conn.commit()
     return render_template('order.html')
 
@@ -83,43 +86,49 @@ def away(i):
 def office():
     conn=condb()
     delete_non_paid_order()
-    m=conn.execute("SELECT * FROM Comp where type=office").fetchall()
-    return render_template('good.hmtl', m=m)
+    u=conn.execute("SELECT * FROM User where ip=?", (ipp(),)).fetchall()[0]
+    m=conn.execute("SELECT * FROM Comp where type='office'").fetchall()
+    return render_template('goods.html', m=m, u=u)
 
 @app.route('/game')
 def game():
     conn=condb()
     delete_non_paid_order()
-    m=conn.execute("SELECT * FROM Comp where type=game").fetchall()
-    return render_template('good.hmtl', m=m)
+    m=conn.execute("SELECT * FROM Comp where type='game'").fetchall()
+    u=conn.execute("SELECT * FROM User where ip=?", (ipp(),)).fetchall()[0]
+    print(u)
+    return render_template('goods.html', m=m, u=u)
 
 @app.route('/budjet')
 def budjet():
     conn=condb()
     delete_non_paid_order()
-    m=conn.execute("SELECT * FROM Comp where type=budjet").fetchall()
-    return render_template('good.hmtl', m=m)
+    u=conn.execute("SELECT * FROM User where ip=?", (ipp(),)).fetchall()[0]
+    m=conn.execute("SELECT * FROM Comp where type='budjet'").fetchall()
+    return render_template('goods.html', m=m, u=u)
 
 @app.route('/pro')
 def pro():
     conn=condb()
     delete_non_paid_order()
-    m=conn.execute("SELECT * FROM Comp where type=pro").fetchall()
-    return render_template('goods.hmtl', m=m)
+    u=conn.execute("SELECT * FROM User where ip=?", (ipp(),)).fetchall()[0]
+    m=conn.execute("SELECT * FROM Comp where type='pro'").fetchall()
+    return render_template('goods.html', m=m, u=u)
 
 @app.route('/good/<int:g>')
 def good(g):
     conn=condb()
     delete_non_paid_order()
-    m=conn.execute("SELECT * FROM Comp WHERE id=?", (g)).fetchall()[0]
-    return render_template('good.html', i=m)
+    u=conn.execute("SELECT * FROM User where ip=?", (ipp(),)).fetchall()[0]
+    m=conn.execute("SELECT * FROM Comp WHERE id=?", (g,)).fetchall()
+    return render_template('good.html', i=m, u=u)
 
 
 @app.route('/pay/<int:i>')
 def pay(i):
     conn=condb()
     delete_non_paid_order()
-    p=conn.execute('SELECT * FROM Comp where id=?', (i)).fetchall()[0]
+    p=conn.execute('SELECT * FROM Comp where id=?', (i,)).fetchall()[0]
     disc=conn.execute(f"SELECT {p['type']} FROM User where ip=?", (ipp()))
     url = checkout.url(data).get('checkout_url')
     num=0 
@@ -130,7 +139,7 @@ def pay(i):
         num=round(random.randrange(0, 999))
         if num not in i['num']:
             break
-    conn.execute('INSERT INTO Orderss(?, ?, ?, ?, ?, ?, ?)', (len(ords), p['ads'], p['name'], p['img'], num , ipp()))
+    conn.execute('INSERT INTO Orderss(?, ?, ?, ?, ?, ?, ?)', (len(ords)+1, p['ads'], p['name'], p['img'], num , ipp()))
     api = Api(merchant_id= 1396424,
               secret_key='test')
     checkout = Checkout(api=api)

@@ -9,15 +9,23 @@
      href="{{url_for('static', filename='css\1.css')}}">
     <link rel="stylesheet"
      href="C:\Users\user\Desktop\web1\static\css\1.css">
-    {% block css %}{% endblock css %}
+    <style>
+        
+    </style>
 </head>
-<body>
+<body style='background-color: rgb(60, 0, 200);}'>
 
 <div>
-<h1 id="title_discount">WINTER DISCOUNT</h1>
+<h1 id="title_discount" style="    text-align: center;
+    color: white;
+    font-family: Arial;">WINTER DISCOUNT</h1>
 <br>
 {% block procd %}
-
+<a href='/'>
+<h2 style="   text-decoration: none
+text-align: center;
+    color: white;
+    font-family: Arial;">Click here to return in Home</h2></h2>
 {% endblock procd %}
 <br>
 {% block main%}

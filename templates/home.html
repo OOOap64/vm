@@ -3,34 +3,106 @@
 Home
 {% endblock title %}
 {% block procd %}
-    <input id="promocode" type="text" name="promocode">
-    </div>
+<form method='POST' style="margin-left: 40%; margin-top: 50px;">
+    
+    <input type='submit' value ="Submit" style="float: left; background-color: rgb(20, 20, 20); color: white; padding: 7px">
+    <input id="promocode" type="text" name="promocode" style="    
+    float: left;
+    width:240px;
+    height: 30px;
+    align-items: center;
+    border-radius: 12px;
+    border: solid black 3px;">
+    
+</form>
+<br>
 {% endblock procd %}
 {% block main %}
+        <a  href='/orders'>
+    <div id='categoty' style="    background-color: rgb(45,45, 45 );
+    border-radius: 30px;
+    width: 280px;
+    height: 280px;
+    padding: 25px;
+    color: white;
+    text-align: center;
+    margin: 25px;
+    float:left;">
+        <img src="img/office.webp" style="    width: 170px;
+    height: 170px;
+    text-box: block;
+    text-align: center ;">
+        <h1>Order</h1>
+    </div>
+    <a/>
     <a  href='/game'>
-    <div id='categoty'>
-        <img src="C:\Users\user\Desktop\WWW3\static\img\game.webp">
+    <div id='categoty' style="    background-color: rgb(45,45, 45 );
+    border-radius: 30px;
+    width: 280px;
+    height: 280px;
+    padding: 25px;
+    color: white;
+    text-align: center;
+    margin: 25px;
+    float:left;">
+        <img src="C:/Users/user/Desktop/WWW3/static/img/game.webp" style="    width: 170px;
+    height: 170px;
+    text-box: block;
+    text-align: center ;">
         <h1>Game</h1>
     </div>
-<a/>
-<a  href='/budjet'>
-    <div id='categoty'>
-        <img src="C:\Users\user\Desktop\WWW3\static\img\budjet.webp">
-        <h1>Budjet</h1>
-    </div>
-<a/>
-<a  href='/office'>
-    <div id='categoty'>
-        <img src="C:\Users\user\Desktop\WWW3\static\img\ofice.webp">
-        <h1>Office</h1>
-    </div>
-<a/>
-<a  href='/pro'>
-    <div id='categoty'>
-        <img src="C:\Users\user\Desktop\WWW3\static\img\pro.webp">
+    <a/>
+    <a  href='/game'>
+    <div id='categoty' style="background-color: rgb(45,45, 45 );
+    border-radius: 30px;
+    width: 280px;
+    height: 280px;
+    padding: 25px;
+    color: white;
+    text-align: center;
+    margin: 25px;
+    float:left;">
+        <img src="C:/Users/user/Desktop/WWW3/static/img/pro.webp" style="    width: 170px;
+    height: 170px;
+    text-box: block;
+    text-align: center ;">
         <h1>Pro</h1>
     </div>
-<a/>
+    <a/>
+    <a  href='/game'>
+    <div id='categoty' style="    background-color: rgb(45,45, 45 );
+    border-radius: 30px;
+    width: 280px;
+    height: 280px;
+    padding: 25px;
+    color: white;
+    text-align: center;
+    margin: 25px;
+    float:left;">
+        <img src="C:/Users/user/Desktop/web1/templates/img/pro3.jpg" style="   width: 170px;
+    height: 170px;
+    text-box: block;
+    text-align: center ;">
+        <h1>Budjet</h1>
+    </div>
+    <a/>
+    <a  href='/game'>
+    <div id='categoty' style="    background-color: rgb(45,45, 45 );
+    border-radius: 30px;
+    width: 280px;
+    height: 280px;
+    padding: 25px;
+    color: white;
+    text-align: center;
+    margin: 25px;
+    float:left;">
+        <img src="img/office.webp" style="    width: 170px;
+    height: 170px;
+    text-box: block;
+    text-align: center ;">
+        <h1>Office</h1>
+    </div>
+    <a/>
 
 
 {% endblock main %}
